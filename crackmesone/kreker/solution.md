@@ -41,20 +41,20 @@ In order to inject code into the child notepad process that got spawned by the b
 
 We can see the address to be modified on the stack. We copy it, step out of the WriteProcessMemory function and then attach a debugger to the child notepad process. Then we go to the address and notice an interesting sequence of instructions:
 
-07270293 | mov byte ptr ss:[ebp-54],4C             | 4C:'L'
-07270297 | mov byte ptr ss:[ebp-53],6F             | 6F:'o'
-0727029B | mov byte ptr ss:[ebp-52],73             | 73:'s'
-0727029F | mov byte ptr ss:[ebp-51],65             | 65:'e'
-072702A3 | mov byte ptr ss:[ebp-50],21             | 21:'!'
-072702A7 | mov byte ptr ss:[ebp-4F],21             | 21:'!'
-072702AB | mov byte ptr ss:[ebp-4E],0              |
-072702AF | mov byte ptr ss:[ebp-94],57             | 57:'W'
-072702B6 | mov byte ptr ss:[ebp-93],69             | 69:'i'
-072702BD | mov byte ptr ss:[ebp-92],6E             | 6E:'n'
-072702C4 | mov byte ptr ss:[ebp-91],21             | 21:'!'
-072702CB | mov byte ptr ss:[ebp-90],21             | 21:'!'
-072702D2 | mov byte ptr ss:[ebp-8F],21             | 21:'!'
-072702D9 | mov byte ptr ss:[ebp-8E],0              |
+    07270293 | mov byte ptr ss:[ebp-54],4C             | 4C:'L'
+    07270297 | mov byte ptr ss:[ebp-53],6F             | 6F:'o'
+    0727029B | mov byte ptr ss:[ebp-52],73             | 73:'s'
+    0727029F | mov byte ptr ss:[ebp-51],65             | 65:'e'
+    072702A3 | mov byte ptr ss:[ebp-50],21             | 21:'!'
+    072702A7 | mov byte ptr ss:[ebp-4F],21             | 21:'!'
+    072702AB | mov byte ptr ss:[ebp-4E],0              |
+    072702AF | mov byte ptr ss:[ebp-94],57             | 57:'W'
+    072702B6 | mov byte ptr ss:[ebp-93],69             | 69:'i'
+    072702BD | mov byte ptr ss:[ebp-92],6E             | 6E:'n'
+    072702C4 | mov byte ptr ss:[ebp-91],21             | 21:'!'
+    072702CB | mov byte ptr ss:[ebp-90],21             | 21:'!'
+    072702D2 | mov byte ptr ss:[ebp-8F],21             | 21:'!'
+    072702D9 | mov byte ptr ss:[ebp-8E],0              |
 
 It prepares the strings which are included in the message box text field. 
 
